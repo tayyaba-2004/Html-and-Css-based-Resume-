@@ -1,0 +1,223 @@
+/* ================= VARIABLES ================= */
+:root {
+    --bg-main: rgb(63, 59, 59);
+    --text-main: white;
+    --header-bg: #b8977a;
+    --header-text: white;
+    --card-bg: #b8977a;
+    --card-text: black;
+    --contact-bg: black;
+    --contact-text: #f8f0f0;
+}
+
+.light-mode {
+    --bg-main: #fff7f2;      
+    --text-main: #4a2c2a;      
+    --header-bg: #ffe1d6;      
+    --header-text: #4a2c2a;
+    --card-bg: #ffd6c9;    
+    --card-text: #4a2c2a;
+    --contact-bg: #ff9aa2; 
+    --contact-text: white;
+}
+
+/* ================= BASE STYLES ================= */
+* {
+    font-family: Arial, sans-serif;
+}
+
+html, body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    height: 100%;
+    margin: 0;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* ================= ANIMATIONS ================= */
+body, .header, .right-side, .Contact-line, .mode-btn, .download-btn {
+    transition: 
+        background-color 0.4s ease,
+        color 0.4s ease,
+        box-shadow 0.4s ease,
+        transform 0.3s ease;
+}
+
+.page {
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header:hover,
+.right-side:hover {
+    transform: translateY(-4px);
+}
+
+.mode-btn:hover,
+.download-btn:hover {
+    transform: scale(1.08) rotate(6deg);
+}
+
+/* ================= TOP-RIGHT BUTTONS ================= */
+.top-buttons {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.mode-btn, .download-btn {
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.mode-btn {
+    background: var(--card-bg);
+    color: var(--card-text);
+}
+
+.download-btn {
+    background: var(--contact-bg);
+    color: var(--contact-text);
+}
+
+/* ================= LAYOUT ================= */
+.container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-start;     
+    gap: 20px;                
+    padding: -10px;
+    margin: 20px;
+}
+
+.left-side {
+    flex: 1;
+}
+
+.right-side {
+    flex: 0 0 32%;                 
+    max-width: 360px;              
+    padding: 20px;
+    margin: 10px;
+    background-color: var(--card-bg);
+    color: var(--card-text);
+    border-radius: 10px;
+    margin-right: 3%;
+}
+
+/* ================= HEADER ================= */
+.header {
+    display: flex;
+    justify-content: space-between;  
+    align-items: center;               
+    padding: 20px 30px;   
+    margin: 20px;
+    margin-right: 150px;            
+    border-top-right-radius: 50px;     
+    border-bottom-right-radius: 50px;
+    border: 1px solid black;           
+    background-color: var(--header-bg);
+    color: var(--header-text);         
+    position: relative;
+    width: 1000px;
+    height: 100px;
+}
+
+#name {
+    position: absolute;
+    right: 40px;
+}
+
+#image {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid black;
+}
+
+#a {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* ================= CONTACT ================= */
+.Contact-line {
+    display: inline-block;
+    background-color: var(--contact-bg);
+    color: var(--contact-text);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.Contact-line a {
+    color: var(--contact-text);
+    text-decoration: underline;
+    margin-left: 5px;
+}
+
+/* ================= LIGHT MODE SHADOWS ================= */
+.light-mode .right-side,
+.light-mode .header {
+    box-shadow: 0 4px 10px rgba(255, 154, 162, 0.25);
+}
+
+/* ================= PRINT-FRIENDLY ================= */
+@media print {
+    .top-buttons { display: none; }
+
+    body {
+        background-color: white !important;
+        color: black !important;
+    }
+
+    .header {
+        background-color: #ffe1d6 !important;
+        color: #4a2c2a !important;
+        box-shadow: none !important;
+    }
+
+    .right-side {
+        background-color: #ffd6c9 !important;
+        color: #4a2c2a !important;
+        box-shadow: none !important;
+    }
+
+    .Contact-line {
+        background-color: #ff9aa2 !important;
+        color: white !important;
+    }
+
+    .Contact-line a {
+        color: white !important;
+    }
+
+    .container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #image {
+        width: 120px;
+        height: 120px;
+    }
+}
